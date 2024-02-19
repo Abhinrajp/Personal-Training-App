@@ -42,10 +42,28 @@ dependencies:
   path_provider: ^2.1.2
   permission_handler: ^11.2.0
   path: ^1.8.3
+  flutter_phone_direct_caller: ^2.1.1
+  syncfusion_flutter_pdf: ^24.2.4
+  pdf: ^3.10.7
+  open_file: ^3.3.2
+  url_launcher: ^6.2.4
+  flutter_local_notifications: ^16.3.2
+  flutter_timezone: ^1.0.8
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/cbum_icon_new.png"  
+  flutter_app_name: ^0.1.0
+
+flutter_app_name:
+  name: "PT Portal"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -83,6 +101,11 @@ flutter:
     - assets/images/Chris Bumstead on X.jpeg
     - assets/images/chris-bumstead-shoulder-workout.jpg
     - assets/images/user-not-found.png
+    - assets/images/Chris Bumstead.jpeg
+    - assets/images/Chris Bumstead CBUM.jpeg
+    - assets/images/chris-bumstead-pre-workout-updated.webp
+    - assets/images/screenshot 2024-02-15 134840.png
+    - assets/images/cbum_icon_new.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
