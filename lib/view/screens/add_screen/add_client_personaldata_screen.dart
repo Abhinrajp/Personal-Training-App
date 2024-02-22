@@ -51,15 +51,6 @@ class _ScreenFormState extends State<ScreenForm> {
     ];
 
     return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: const Color.fromARGB(255, 61, 61, 61),
-        //   title: Text(
-        //     widget.titleform ?? '',
-        //     style: const TextStyle(
-        //         fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-        //   ),
-        //   centerTitle: true,
-        // ),
         body: Container(
       height: double.infinity,
       width: double.infinity,

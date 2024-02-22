@@ -117,7 +117,7 @@ class _ScreenClientState extends State<ScreenClient> {
                                         ),
                                         IconButton(
                                             onPressed: () {
-                                              deletemsg(context, clientdata.id);
+                                              deletemsg(context, clientdata);
                                             },
                                             icon: const Icon(
                                               Icons.delete,

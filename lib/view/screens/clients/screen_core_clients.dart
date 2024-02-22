@@ -113,7 +113,7 @@ class _ScreenCoreClientsState extends State<ScreenCoreClients> {
                                         ),
                                         IconButton(
                                             onPressed: () {
-                                              deletemsg(context, clientdata.id);
+                                              deletemsg(context, clientdata);
                                             },
                                             icon: const Icon(
                                               Icons.delete,

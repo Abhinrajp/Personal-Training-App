@@ -2,7 +2,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:personal_training_app/model/client_model.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 int id1 = 0;
 
@@ -38,7 +37,7 @@ class LocalNotification {
   }) async {
     tz.initializeTimeZones();
     id1++;
-    var localtime = tz.local;
+    // var localtime = tz.local;
     AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
       'your channel $id',

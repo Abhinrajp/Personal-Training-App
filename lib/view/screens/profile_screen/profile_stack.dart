@@ -685,7 +685,7 @@ class _ScreenProfileStackState extends State<ScreenProfileStack> {
     DateTime joinedDate = DateTime.parse(id);
     DateTime currentDate = DateTime.now();
     int dayDiff = currentDate.difference(joinedDate).inDays;
-    if (dayDiff % 30 == 0) {
+    if (dayDiff != 0 && dayDiff % 30 == 0) {
       visble = true;
       return Text(
         'Fee pending ${(widget.clientdata.pendingfee)}',

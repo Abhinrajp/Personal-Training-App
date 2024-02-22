@@ -226,19 +226,19 @@ class _ScreenEditDietState extends State<ScreenEditDiet> {
       await addClient(clientModelM);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeBarScreen()),
+          MaterialPageRoute(builder: (context) => HomeBarScreen()),
           (route) => false);
     } else if (widget.clienteditWO.category == fatlose) {
       await addclientF(clientModelM);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeBarScreen()),
+          MaterialPageRoute(builder: (context) => HomeBarScreen()),
           (route) => false);
     } else {
       await addclientC(clientModelM);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeBarScreen()),
+          MaterialPageRoute(builder: (context) => HomeBarScreen()),
           (route) => false);
     }
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

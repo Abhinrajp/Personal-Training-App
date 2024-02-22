@@ -114,7 +114,7 @@ class _ScreenFatloseClientsState extends State<ScreenFatloseClients> {
                                         ),
                                         IconButton(
                                             onPressed: () {
-                                              deletemsg(context, clientdata.id);
+                                              deletemsg(context, clientdata);
                                             },
                                             icon: const Icon(
                                               Icons.delete,

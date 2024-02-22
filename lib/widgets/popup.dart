@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:personal_training_app/controller/db_contoller/dbfuntions.dart';
+import 'package:personal_training_app/model/client_model.dart';
 
-deletemsg(context, String id) {
+final String musclebuilding = 'Muscle Building';
+final String fatlose = 'Fat Lose';
+final String corefitness = 'Core Fitness';
+deletemsg(context, ClientModelM client) {
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Are you sure'),
-        content: const Text('Do you want to delete this Client'),
+        backgroundColor: Colors.black,
+        title: const Text(
+          'Are you sure',
+          style: TextStyle(color: Colors.white),
+        ),
+        content: const Text('Do you want to delete this Client',
+            style: TextStyle(color: Colors.white)),
         actions: [
           ElevatedButton(
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.red)),
               onPressed: () {
-                deleteClientF(id);
+                if (client.category == musclebuilding) {
+                  deleteClient(client.id);
+                } else if (client.category == fatlose) {
+                  deleteClientF(client.id);
+                } else if (client.category == corefitness) {
+                  deleteClientC(client.id);
+                }
                 Navigator.pop(context);
 
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -25,12 +40,21 @@ deletemsg(context, String id) {
                   backgroundColor: Colors.red,
                 ));
               },
-              child: const Text('Yes')),
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.black),
+              )),
           ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white)),
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('No')),
+              child: const Text(
+                'No',
+                style: TextStyle(color: Colors.black),
+              )),
         ],
       );
     },

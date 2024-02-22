@@ -28,16 +28,12 @@ class _FullClientScreenState extends State<FullClientScreen> {
   listenNotification() {
     LocalNotification.onclicknotification.stream.listen((event) {
       print("Notification clicked: $event");
-      if (event is ClientModelM) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ScreenProfileStack(clientdata: event),
-          ),
-        );
-      } else {
-        print("Invalid event type: $event");
-      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScreenProfileStack(clientdata: event),
+        ),
+      );
     });
     print("Notification listener setup complete.");
   }
@@ -195,7 +191,7 @@ class _FullClientScreenState extends State<FullClientScreen> {
     final joinedDate = DateTime.parse(clientModelM.id);
     final currentDate = DateTime.now();
     final dayDiff = currentDate.difference(joinedDate).inDays;
-    if (dayDiff != 0 && dayDiff % 30 != 0) {
+    if (dayDiff == 0 && dayDiff % 30 == 0) {
       await LocalNotification.showNotification(
         title: 'Fee pending !',
         body: 'Fee of Mr ${clientModelM.name} is pending',
