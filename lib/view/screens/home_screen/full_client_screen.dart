@@ -47,6 +47,7 @@ class _FullClientScreenState extends State<FullClientScreen> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              leading: Icon(Icons.group_outlined),
               backgroundColor: Colors.grey.shade300,
               floating: true,
               title: Row(
@@ -73,10 +74,10 @@ class _FullClientScreenState extends State<FullClientScreen> {
                   return SliverGrid(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                    ),
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            mainAxisExtent: 250),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final clientdata = value[index];
@@ -93,43 +94,81 @@ class _FullClientScreenState extends State<FullClientScreen> {
                               ),
                             );
                           },
-                          child: Card(
-                            elevation: 10,
-                            shadowColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(18),
-                                image: DecorationImage(
-                                  image: FileImage(File(clientdata.image)),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    clientdata.name,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 180,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          // topLeft: Radius.circular(18),
+                                          topRight: Radius.circular(18),
+                                        ),
+                                        image: DecorationImage(
+                                          image:
+                                              FileImage(File(clientdata.image)),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
+                                    Positioned(
+                                      bottom: 0,
+                                      left: 0,
+                                      right: 0,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(12.0),
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(0.6),
+                                          borderRadius: BorderRadius.only(),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              clientdata.name,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            Container(
+                                              constraints:
+                                                  BoxConstraints(maxWidth: 38),
+                                              child: PlanBadge(
+                                                  clientdata: clientdata),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      // topRight: Radius.circular(18),
+                                    ),
+                                    color: Colors.black,
                                   ),
-                                  planbadge(clientdata: clientdata),
-                                  Row(
+                                  child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text(
-                                        clientdata.category,
-                                        style: const TextStyle(
-                                          color: Colors.orange,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
+                                      Flexible(
+                                        child: Text(
+                                          clientdata.category,
+                                          style: TextStyle(
+                                            color: Colors.purple.shade300,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                       ),
                                       IconButton(
@@ -147,13 +186,13 @@ class _FullClientScreenState extends State<FullClientScreen> {
                                             ),
                                           );
                                         },
-                                        icon: const Icon(Icons.edit),
+                                        icon: Icon(Icons.edit),
                                         color: Colors.white,
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                )
+                              ],
                             ),
                           ),
                         );
@@ -191,7 +230,7 @@ class _FullClientScreenState extends State<FullClientScreen> {
     final joinedDate = DateTime.parse(clientModelM.id);
     final currentDate = DateTime.now();
     final dayDiff = currentDate.difference(joinedDate).inDays;
-    if (dayDiff == 0 && dayDiff % 30 == 0) {
+    if (dayDiff != 0 && dayDiff % 30 == 0) {
       await LocalNotification.showNotification(
         title: 'Fee pending !',
         body: 'Fee of Mr ${clientModelM.name} is pending',

@@ -113,11 +113,11 @@ class Textforprofiledetailenter extends StatelessWidget {
   }
 }
 
-class planbadge extends StatelessWidget {
-  const planbadge({
-    super.key,
+class PlanBadge extends StatelessWidget {
+  const PlanBadge({
+    Key? key,
     required this.clientdata,
-  });
+  }) : super(key: key);
 
   final ClientModelM clientdata;
 
@@ -130,12 +130,16 @@ class planbadge extends StatelessWidget {
             Icons.star,
             color: Colors.yellowAccent.shade700,
           ),
-          Text(
-            'Gold',
-            style: TextStyle(
-                color: Colors.yellowAccent.shade700,
-                fontWeight: FontWeight.bold),
-          )
+          // Flexible(
+          //   child: Text(
+          //     'Gold',
+          //     style: TextStyle(
+          //       color: Colors.yellowAccent.shade700,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //     overflow: TextOverflow.ellipsis,
+          //   ),
+          // ),
         ],
       );
     } else if (int.parse(clientdata.plan) > 3 &&
@@ -146,26 +150,35 @@ class planbadge extends StatelessWidget {
             Icons.star,
             color: Colors.blueGrey.shade100,
           ),
-          Text(
-            'Platinum',
-            style: TextStyle(
-                color: Colors.blueGrey.shade100, fontWeight: FontWeight.bold),
-          )
+          // Flexible(
+          //   child: Text(
+          //     'Platinum',
+          //     style: TextStyle(
+          //       color: Colors.blueGrey.shade100,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //     overflow: TextOverflow.ellipsis,
+          //   ),
+          // ),
         ],
       );
     } else {
-      return const Row(
+      return Row(
         children: [
           Icon(
             Icons.star,
             color: Color.fromARGB(255, 139, 185, 224),
           ),
-          Text(
-            'Diamound',
-            style: TextStyle(
-                color: Color.fromARGB(255, 139, 185, 224),
-                fontWeight: FontWeight.bold),
-          )
+          // Flexible(
+          //   child: Text(
+          //     'Diamond',
+          //     style: TextStyle(
+          //       color: Color.fromARGB(255, 139, 185, 224),
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //     overflow: TextOverflow.ellipsis,
+          //   ),
+          // ),
         ],
       );
     }

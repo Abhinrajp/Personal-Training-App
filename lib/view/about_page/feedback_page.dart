@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FeedbackPage extends StatelessWidget {
   const FeedbackPage({super.key});
@@ -27,13 +28,6 @@ class FeedbackPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Phone', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('8592943588'),
-              ],
-            ),
             SizedBox(
               height: 20,
             ),
@@ -42,6 +36,31 @@ class FeedbackPage extends StatelessWidget {
               children: [
                 Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
                 Text('abhinraj8086@gmail.com'),
+                IconButton(
+                    onPressed: () async {
+                      String? encodeQueryParameters(
+                          Map<String, String> params) {
+                        return params.entries
+                            .map((MapEntry<String, String> e) =>
+                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                            .join('&');
+                      }
+
+                      final Uri emailuri = Uri(
+                        scheme: 'mailto',
+                        path: 'abhinraj8086@gmail.com',
+                        query: encodeQueryParameters(<String, String>{
+                          'subject': 'Tell about your valuable feedback',
+                          'body': 'say to us'
+                        }),
+                      );
+                      if (await canLaunchUrl(emailuri)) {
+                        launchUrl(emailuri);
+                      } else {
+                        throw Exception('error to laucnh $emailuri');
+                      }
+                    },
+                    icon: Icon(Icons.outgoing_mail))
               ],
             )
           ],

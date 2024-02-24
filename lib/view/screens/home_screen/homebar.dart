@@ -39,7 +39,7 @@ class _HomeBarScreenState extends State<HomeBarScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_add),
-            label: 'add',
+            label: 'Add Client',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.category_sharp),

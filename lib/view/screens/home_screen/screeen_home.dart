@@ -4,6 +4,7 @@ import 'package:personal_training_app/view/about_page/about_page.dart';
 import 'package:personal_training_app/view/about_page/feedback_page.dart';
 import 'package:personal_training_app/view/about_page/privacy_policy_page.dart';
 import 'package:personal_training_app/controller/screen_controller/screen_navigation/muscle_building_scrn_navigation.dart';
+import 'package:personal_training_app/view/about_page/terms_condition_page.dart';
 import 'package:personal_training_app/view/screens/clients/screen_core_clients.dart';
 import 'package:personal_training_app/view/screens/clients/screen_fatlose_clients.dart';
 
@@ -18,12 +19,14 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(30),
-          child: AppBar(
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.black),
-        ),
+        appBar: AppBar(
+            title: Text(
+              'Category',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -69,6 +72,19 @@ class _ScreenHomeState extends State<ScreenHome> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => PrivacyPolicyPage(),
+                      ));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.policy),
+                title: Text(
+                  'Terms & Conditions',
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TermsandCondionPage(),
                       ));
                 },
               ),

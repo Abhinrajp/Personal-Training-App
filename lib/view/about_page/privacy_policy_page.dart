@@ -140,7 +140,7 @@ class PrivacyPolicyPage extends StatelessWidget {
               SizedBox(
                 height: 25,
               ),
-              Text('Last Updated : 02/220/2024',
+              Text('Last Updated : 02/20/2024',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 25,

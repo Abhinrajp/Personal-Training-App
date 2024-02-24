@@ -125,7 +125,8 @@ class Search extends SearchDelegate {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20),
                               ),
-                              planbadge(clientdata: clinetdata),
+                              // planbadge(clientdata: clinetdata),
+                              PlanBadge(clientdata: clinetdata),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
